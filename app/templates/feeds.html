@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+  <head>
+    <title>My Flickr</title>
+        <link href="http://getbootstrap.com/examples/signin/signin.css" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    	<script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
+    	<link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="http://getbootstrap.com/examples/dashboard/dashboard.css" rel="stylesheet">
+  </head>
+  <body>
+     
+        <div class="container-fluid">
+            <div class="row">
+                <div>
+                	<center>
+                    <div class="page-header">
+                        <h3>Flickr Public Feeds</h3>
+                    </div>
+                    <form action = "/feeds/" method="post">
+                    <p>Serach by tags</p>
+                    <div id="container"style="display:inline-block;">
+                    <div id="container" style="float: left">
+  					
+  					<p><input type = "text" name = "tag" /></p>
+  					</div>
+  					<div id="container" style="float: right">
+  					<p><input type = "submit" value = "submit" /></p>
+  					</div>
+  					</div>
+  						</form>
+                    <center>   
+                    <div id="notifications">
+                    		{% if feed.images %}
+      							{% for image in feed.images %}
+      							<div style="margin-bottom: 50px">
+      							{% if image.tag %}
+      							<p>Tag: {{image.tag}}</p>
+      							{% else %}
+      							<p>Tag: None</p>
+      							{% endif %}
+      							<img src={{image.image}} alt="Flickr Image" width="400" height="300">
+								</div>
+								{% endfor %}
+      						{% else %}
+      						<h2>No feeds for now. Please refresh after sometime</h2>
+      						{% endif %}
+                        </div>
+
+
+                    </div>
+                 
+                    </center> 
+       
+                </div>
+            </div>
+        </div>
+   
+      
+
+  </body>
+</html>
