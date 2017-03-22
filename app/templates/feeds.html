@@ -34,12 +34,18 @@
                     		{% if feed.images %}
       							{% for image in feed.images %}
       							<div style="margin-bottom: 50px">
+      							<div id="content"style="display:inline-block;">
       							{% if image.tag %}
-      							<p>Tag: {{image.tag}}</p>
+      							<p style="float: left">Tag: {{image.tag}}</p>
       							{% else %}
-      							<p>Tag: None</p>
+      							<p style="float: left">Tag: None</p>
       							{% endif %}
+      							<a style="float: right; margin-left: 10px;" href="#"><u>Like</u></a>
+      							</div>
+      							
+      							<div>
       							<img src={{image.image}} alt="Flickr Image" width="400" height="300">
+      							</div>
 								</div>
 								{% endfor %}
       						{% else %}
