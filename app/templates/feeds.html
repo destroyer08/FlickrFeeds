@@ -7,6 +7,7 @@
     	<script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
     	<link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
         <link href="http://getbootstrap.com/examples/dashboard/dashboard.css" rel="stylesheet">
+        <script src="{{url_for('static', filename='app-ajax.js') }}"></script>
   </head>
   <body>
      
@@ -40,7 +41,8 @@
       							{% else %}
       							<p style="float: left">Tag: None</p>
       							{% endif %}
-      							<a style="float: right; margin-left: 10px;" href="#"><u>Like</u></a>
+      							<p id = {{image.id}} style="float: right; margin-left: 10px;"></p>
+      							<button class = "likes" img_id = {{image.id}} type=button style="float: right; margin-left: 10px;">Like</button>
       							</div>
       							
       							<div>
@@ -61,8 +63,19 @@
                 </div>
             </div>
         </div>
-   
-      
+        <script type="text/javascript">
+			   $('body').on('click','.likes', function(){
+			   	var img_id;
+			   	img_id = $(this).attr('img_id');
+			   	$('#'+img_id).html("<b>Liked</b>");
+			   	$(this).hide();
+			   
+			   });
+
+			
+
+        </script>
+
 
   </body>
 </html>
